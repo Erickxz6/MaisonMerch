@@ -1,0 +1,198 @@
+/* ============================================================
+   estilos.css — Brisa Moda
+   Estilos PROPIOS. Se cargan después de Bootstrap para poder
+   ajustar su aspecto sin modificar los archivos de Bootstrap.
+   ============================================================ */
+
+/* ===== PASO 7: Identidad visual de la tienda ===== */
+
+/* 1. Colores de la marca en variables */
+:root {
+  --brisa-coral: #19198C;
+  --brisa-coral-oscuro: #11115f;
+  --brisa-arena: #f6efe6;
+  --maison-azul: #19198C;
+  --maison-azul-oscuro: #11115f;
+  --maison-pastel: #e8eafb;        /* fondo principal pastel */
+  --maison-pastel-2: #d9ddf6;      /* fondo pastel alterno para secciones */
+}
+
+/* 2. Fuente de toda la página */
+body {
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+  background-color: var(--maison-pastel);
+}
+
+/* Fondos pastel */
+header .navbar {
+  background-color: var(--maison-pastel) !important;
+}
+
+.bg-body-tertiary {
+  background-color: var(--maison-pastel-2) !important;
+}
+
+/* 3. Utilidades propias de color */
+.text-coral {
+  color: var(--brisa-coral);
+}
+
+.text-coral .fw-light{
+  font-size: 3.7px;
+}
+
+.bg-arena {
+  background-color: var(--brisa-arena);
+}
+
+/* 4. Un botón con el color de la marca (variables del componente .btn) */
+.btn-coral {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--brisa-coral);
+  --bs-btn-border-color: var(--brisa-coral);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--brisa-coral-oscuro);
+  --bs-btn-hover-border-color: var(--brisa-coral-oscuro);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--brisa-coral-oscuro);
+  --bs-btn-active-border-color: var(--brisa-coral-oscuro);
+  --bs-btn-focus-shadow-rgb: 25, 25, 140;
+}
+
+/* 5. Tarjetas de producto: foto uniforme y efecto al pasar el mouse */
+.tarjeta-producto .card-img-top {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.tarjeta-producto {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta-producto:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.12);
+}
+
+/* 6. Categorías: la foto se acerca un poco al pasar el mouse */
+.categoria img {
+  transition: transform 0.3s ease;
+}
+
+.categoria:hover img {
+  transform: scale(1.05);
+}
+
+.categoria .card-img-overlay {
+  background: linear-gradient(transparent 50%, rgba(0, 0, 0, 0.6));
+}
+
+/* 7. Los enlaces del menú no quedan tapados por la barra fija */
+section[id] {
+  scroll-margin-top: 4.5rem;
+}
+
+/* 8. Menos movimiento para quien lo configure en su equipo */
+@media (prefers-reduced-motion: reduce) {
+  .tarjeta-producto,
+  .categoria img {
+    transition: none;
+  }
+}
+
+
+/* ===== Botones en azul #19198C ===== */
+.btn-dark {
+  --bs-btn-bg: var(--maison-azul);
+  --bs-btn-border-color: var(--maison-azul);
+  --bs-btn-hover-bg: var(--maison-azul-oscuro);
+  --bs-btn-hover-border-color: var(--maison-azul-oscuro);
+  --bs-btn-active-bg: var(--maison-azul-oscuro);
+  --bs-btn-active-border-color: var(--maison-azul-oscuro);
+  --bs-btn-disabled-bg: var(--maison-azul);
+  --bs-btn-disabled-border-color: var(--maison-azul);
+  --bs-btn-focus-shadow-rgb: 25, 25, 140;
+}
+
+.btn-outline-dark {
+  --bs-btn-color: var(--maison-azul);
+  --bs-btn-border-color: var(--maison-azul);
+  --bs-btn-hover-bg: var(--maison-azul);
+  --bs-btn-hover-border-color: var(--maison-azul);
+  --bs-btn-active-bg: var(--maison-azul);
+  --bs-btn-active-border-color: var(--maison-azul);
+  --bs-btn-disabled-color: var(--maison-azul);
+  --bs-btn-disabled-border-color: var(--maison-azul);
+  --bs-btn-focus-shadow-rgb: 25, 25, 140;
+}
+
+/* El botón de la sección oscura de suscripción necesita borde claro para verse */
+#suscripcion .btn-coral {
+  --bs-btn-border-color: #fff;
+  --bs-btn-hover-border-color: #fff;
+  --bs-btn-active-border-color: #fff;
+}
+
+/* ===== SECCIÓN 1 (hero): imagen a todo el ancho con texto encima ===== */
+.hero {
+  position: relative;
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #fff;
+}
+
+.hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.65));
+  z-index: 1;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero .lead {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.hero .btn-outline-light {
+  --bs-btn-hover-color: var(--maison-azul);
+}
+
+@media (max-width: 767.98px) {
+  .hero {
+    min-height: 460px;
+  }
+}
+
+/* ===== Logo Maison Merch ===== */
+.logo-header {
+  height: 64px;
+  width: auto;
+}
+
+.logo-footer {
+  height: 130px;
+  width: auto;
+}
+
+@media (max-width: 575.98px) {
+  .logo-header {
+    height: 52px;
+  }
+}
